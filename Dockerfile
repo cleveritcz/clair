@@ -25,7 +25,7 @@ RUN for cmd in clair clairctl; do\
 FROM registry.access.redhat.com/ubi8/ubi-minimal AS init
 RUN microdnf install --disablerepo=* --enablerepo=ubi-8-baseos-rpms --enablerepo=ubi-8-appstream-rpms podman-catatonit
 
-FROM registry.access.redhat.com/ubi8/ubi-minimal AS final
+FROM rockylinux/rockylinux:9-minimal AS final
 ENTRYPOINT ["/usr/local/bin/catatonit", "--", "/bin/clair"]
 VOLUME /config
 EXPOSE 6060
